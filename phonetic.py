@@ -8,7 +8,10 @@ def read(word):
     try:
         row = data.find_all('tr')[2]
         chinese = row.find('cr').text
-        phone=data.find('td' , class_="ph").text
+        phones=row.find_all('code')
+        phone=[e.text for e in phones]
+        #phone=data.find('td' , class_="ph").text
+        s=" ".join(phone)
         return(chinese+s)
     except:
         return('找不到')
